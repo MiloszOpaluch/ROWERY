@@ -27,7 +27,7 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 public class ZwrotRoweruController {
-//test
+
 
     private klient zalogowny;
 
