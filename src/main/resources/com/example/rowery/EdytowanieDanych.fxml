@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="621.0" prefWidth="1165.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rowery.EdytowanieDanychController">
+
+    <ImageView fitHeight="238.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <image>
+            <Image url="@../../../img/oooo.png" />
+        </image>
+    </ImageView>
+
+    <Button fx:id="Cofnij" onAction="#cofnijj" prefHeight="70.0" prefWidth="260.0" text="Cofnij" textFill="#15a418" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <font>
+            <Font size="16.0" />
+        </font>
+    </Button>
+
+    <Label layoutX="905.0" layoutY="70.0" prefHeight="17.0" prefWidth="260.0" text="Nowy login:" AnchorPane.leftAnchor="905.0" AnchorPane.topAnchor="70.0" />
+    <TextField fx:id="loginField" layoutX="905.0" layoutY="89.0" prefHeight="25.0" prefWidth="260.0" promptText="Wprowadź nowy login" AnchorPane.leftAnchor="905.0" AnchorPane.topAnchor="89.0" />
+
+    <Label layoutX="905.0" layoutY="125.0" prefHeight="17.0" prefWidth="260.0" text="Nowe hasło:" AnchorPane.leftAnchor="905.0" AnchorPane.topAnchor="125.0" />
+    <PasswordField fx:id="hasloField" layoutX="904.0" layoutY="144.0" prefHeight="25.0" prefWidth="260.0" promptText="Wprowadź nowe hasło" AnchorPane.leftAnchor="904.0" AnchorPane.topAnchor="144.0" />
+
+    <Button fx:id="zapisz" layoutX="905.0" layoutY="180.0" onAction="#zapiszZmiany" prefHeight="70.0" prefWidth="260.0" text="Zapisz zmiany" AnchorPane.leftAnchor="905.0" AnchorPane.topAnchor="180.0" />
+    <TableView fx:id="tabelaDanych" layoutX="237.0" layoutY="0.0" prefHeight="150.0" prefWidth="668.0" AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="0.0">
+        <columns>
+            <TableColumn fx:id="kolumnaImie" prefWidth="117.0" text="Imię" />
+            <TableColumn fx:id="kolumnaNazwisko" prefWidth="149.0" text="Nazwisko" />
+            <TableColumn fx:id="kolumnaLogin" prefWidth="200.0" text="Aktualny login" />
+            <TableColumn fx:id="kolumnaHaslo" prefWidth="194.0" text="Aktualne hasło" />
+        </columns>
+    </TableView>
+</AnchorPane>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="621.0" prefWidth="1165.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rowery.ZwrotRoweruController" stylesheets="@styles.css">
+
+    <ImageView fitHeight="238.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="383.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="925.0" AnchorPane.topAnchor="0.0">
+        <image>
+            <Image url="@../../../img/oooo.png" />
+        </image>
+    </ImageView>
+
+    <Button fx:id="Cofnij" layoutX="333.0" layoutY="7.0" onAction="#cofnij" prefHeight="70.0" prefWidth="260.0" text="Cofnij" textFill="#15a418" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <font>
+            <Font size="16.0" />
+        </font>
+    </Button>
+
+    <TableView fx:id="tabelaRowerow" layoutX="238.0" prefHeight="238.0" prefWidth="665.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="0.0">
+
+        <columns>
+            <TableColumn fx:id="model" prefWidth="332.5" text="Model" />
+            <TableColumn fx:id="typ" prefWidth="332.5" text="Typ" />
+
+        </columns>
+
+    </TableView>
+
+    <GridPane layoutX="905.0" layoutY="70.0" prefHeight="50.0" prefWidth="260.0">
+        <columnConstraints>
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+    </GridPane>
+
+    <Button fx:id="zwrocRowerr" layoutX="905.0" layoutY="69.0" onAction="#zwrocRower" prefHeight="76.0" prefWidth="260.0" text="Zwróć" />
+
+</AnchorPane>

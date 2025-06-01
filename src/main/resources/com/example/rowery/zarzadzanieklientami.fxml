@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="621.0" prefWidth="1165.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rowery.ZarzadzanieklientamiController" stylesheets="@styles.css">
+<!--   <HBox layoutX="965.0" layoutY="69.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="905.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">-->
+<!--      <children>-->
+<!--         <TextField prefHeight="25.0" prefWidth="266.0" promptText="Wpisz imie" />-->
+<!--      </children>-->
+<!--   </HBox>-->
+    <GridPane layoutX="905.0" layoutY="70.0">
+      <Button fx:id="usunButton" onAction="#usunKlienta" mnemonicParsing="false" prefWidth="100.0" text="Usuń" GridPane.rowIndex="4" GridPane.rowSpan="4">
+         <GridPane.margin>
+            <Insets left="60.0" />
+         </GridPane.margin>
+      </Button>
+
+    <TextField fx:id="imieField" prefWidth="260" promptText="Imię" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <TextField fx:id="nazwiskoField" prefWidth="260" promptText="Nazwisko" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <TextField fx:id="loginField" prefWidth="260" promptText="Login" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <TextField fx:id="hasloField" prefWidth="260" promptText="Hasło" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+    <Button fx:id="dodajButton" onAction="#dodajKlienta" prefWidth="100" text="Dodaj" GridPane.columnIndex="0" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="160.0" />
+         </GridPane.margin></Button>
+      <columnConstraints>
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+   <ImageView fitHeight="238.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="383.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="925.0" AnchorPane.topAnchor="0.0">
+      <image>
+         <Image url="@../../../img/oooo.png" />
+      </image>
+   </ImageView>
+
+    <Button fx:id="Cofnij" layoutX="333.0" layoutY="7.0" onAction="#cofnij" prefHeight="70.0" prefWidth="260.0" text="Cofniji" textFill="#15a418" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <font>
+        <Font size="16.0" />
+    </font>
+    </Button>
+   <TableView fx:id="tablicaklient" layoutX="238.0" prefHeight="238.0" prefWidth="665.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="0.0">
+     <columns>
+         <TableColumn fx:id="Imie" prefWidth="96.0" text="Imie" />
+       <TableColumn fx:id="Nazwisko" prefWidth="111.0" text="Nazwisko" />
+       <TableColumn fx:id="Login" prefWidth="103.0" text="Login" />
+         <TableColumn fx:id="Haslo" prefWidth="107.0" text="Haslo" />
+         <TableColumn fx:id="Rower" prefWidth="247.0" text="Wypożyczony rower" />
+     </columns>
+   </TableView>
+</AnchorPane>

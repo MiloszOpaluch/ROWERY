@@ -1,0 +1,254 @@
+/* --- General Styles --- */
+
+AnchorPane {
+    -fx-background-color: #f4f7fc; /* Jasnoszare tło dla głównych paneli */
+}
+
+.label {
+    -fx-text-fill: #15a418; /* Domyślny kolor tekstu dla etykiet */
+    -fx-font-family: "System";
+    -fx-font-weight: bold;
+    -fx-font-size: 13px; /* Domyślny rozmiar czcionki dla etykiet pól formularzy */
+}
+
+/* Etykiety w GridPane na ekranie logowania */
+GridPane .label {
+    -fx-font-size: 14px; /* Nieco większe dla czytelności */
+}
+
+/* Duży tytuł na ekranie logowania - stylizowany głównie w FXML */
+/* Można tu dodać np. margines dolny, jeśli potrzeba */
+
+
+.separator .line {
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1px;
+}
+.separator {
+    -fx-background-color: transparent;
+    -fx-padding: 5px 0;
+}
+
+/* --- Text Fields & Password Fields --- */
+.text-field,
+.password-field {
+    -fx-font-size: 14px;
+    -fx-padding: 7px 10px;
+    -fx-border-color: #b0b0b0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-prompt-text-fill: #999999;
+}
+
+.text-field:focused,
+.password-field:focused {
+    -fx-border-color: #15a418; /* Zielony border przy focusie */
+    -fx-background-color: white;
+    /* -fx-effect: dropshadow(gaussian, rgba(21, 164, 24, 0.2), 5, 0, 0, 0); */
+}
+
+/* --- Buttons --- */
+.button {
+    -fx-cursor: hand;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-padding: 8px 18px; /* Domyślny padding dla przycisków */
+    -fx-font-weight: bold; /* Większość przycisków akcji jest pogrubiona */
+    -fx-font-family: "System";
+    /* Rozmiar czcionki często definiowany w FXML, ale można ustawić domyślny */
+    /* -fx-font-size: 14px; */
+}
+
+/* == Primary Action Buttons (Green Background, White Text) == */
+#loginButton, /* HelloController */
+#zapisz, /* EdytowanieDanychController */
+#dodajButton, /* ZarzadzanieklientamiController - Add Client */
+#dodaj, /* RoweryController - Add Bike */
+#wypozyczrower, /* WypozyczRowerController - main action button */
+#zwrocRowerr /* ZwrotRoweruController - main action button */ {
+    -fx-background-color: #15a418;
+    -fx-text-fill: white;
+}
+
+#loginButton:hover,
+#zapisz:hover,
+#dodajButton:hover,
+#dodaj:hover,
+#wypozyczrower:hover,
+#zwrocRowerr:hover {
+    -fx-background-color: derive(#15a418, -15%);
+}
+
+/* Specific padding/font for loginButton if needed (FXML has size 12px) */
+#loginButton {
+    -fx-padding: 8px 25px; /* Trochę więcej paddingu dla mniejszej czcionki */
+}
+/* Specific padding for larger buttons (prefHeight="70" or "76") */
+#zapisz, #wypozyczrower, #zwrocRowerr, #dodaj {
+    -fx-padding: 12px 20px; /* Większy padding dla większych przycisków */
+}
+
+
+/* == Danger Action Buttons (Red Background, White Text) == */
+#usunButton, /* ZarzadzanieklientamiController - Delete Client */
+#usunrower /* RoweryController - Delete Bike */ {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+}
+
+#usunButton:hover,
+#usunrower:hover {
+    -fx-background-color: derive(#dc3545, -15%);
+}
+
+/* == Outlined/Text Buttons (Green Text, Green Border, Transparent Background) == */
+#zarzadzaj, /* AdminController */
+#row, /* AdminController */
+#wypozycz, /* KlientController - menu button */
+#zwrot, /* KlientController */
+#edytuj, /* KlientController */
+#Cofnij /* Common ID for back buttons with textFill="#15a418" */ {
+    -fx-background-color: transparent;
+    -fx-text-fill: #15a418; /* Potwierdzenie, FXML już to ustawia */
+    -fx-border-color: #15a418;
+    -fx-border-width: 2px;
+    /* Padding dostosowany do prefHeight z FXML (często 70px) */
+    -fx-padding: 10px 15px; /* Można dostosować */
+}
+.title-label {
+    -fx-font-family: "System Bold", "Arial Bold", sans-serif; /* Użyj "System Bold" lub alternatyw */
+    -fx-font-size: 50px;          /* Duży rozmiar czcionki, zgodny z FXML */
+    -fx-text-fill: #15a418;       /* Zielony kolor, zgodny z FXML */
+    -fx-font-weight: bold;        /* Pogrubienie, zgodne z FXML */
+    -fx-padding: 20px 0;          /* Dodatkowy padding, jeśli potrzebny (góra/dół) */
+    /* Wyrównanie tekstu jest już ustawione w FXML przez alignment="CENTER" i textAlignment="CENTER" */
+    /* prefHeight i prefWidth są również zarządzane w FXML */
+}
+#zarzadzaj:hover,
+#row:hover,
+#wypozycz:hover,
+#zwrot:hover,
+#edytuj:hover,
+#Cofnij:hover {
+    -fx-background-color: derive(#15a418, 85%); /* Jasnozielone tło */
+    -fx-text-fill: derive(#15a418, -10%); /* Ciemniejszy zielony tekst */
+    -fx-border-color: derive(#15a418, -10%);
+}
+
+/* == Secondary/Logout Buttons (Grey Background, White Text) == */
+#logoutButton /* AdminController, KlientController */ {
+    -fx-background-color: #6c757d;
+    -fx-text-fill: white;
+    /* Padding dostosowany do prefHeight z FXML (często 70px) */
+    -fx-padding: 10px 15px; /* Można dostosować */
+}
+
+#logoutButton:hover {
+    -fx-background-color: derive(#6c757d, -15%);
+}
+
+
+/* --- Error Label --- */
+#errorLabel { /* HelloController */
+    -fx-font-size: 12px;
+    -fx-text-fill: red; /* Potwierdzenie, FXML już to ustawia */
+    -fx-padding: 5px 0 0 0;
+}
+
+/* --- CheckBox --- */
+.check-box {
+    -fx-text-fill: #333333; /* Kolor tekstu etykiety CheckBox */
+    -fx-font-size: 14px;
+}
+
+.check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #b0b0b0;
+    -fx-border-radius: 3px;
+    -fx-pref-width: 16px;  /* Zmniejszone dla subtelniejszego wyglądu */
+    -fx-pref-height: 16px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #15a418; /* Zielony "ptaszek" */
+    -fx-padding: 3px; /* Dopasowanie rozmiaru ptaszka */
+}
+
+.check-box:selected .box {
+    -fx-border-color: #15a418; /* Zielona ramka zaznaczonego boxa */
+}
+
+.check-box:hover .box {
+    -fx-border-color: #15a418;
+}
+
+
+/* --- TableView --- */
+/* Styl ogólny dla wszystkich TableView, zamiast powtarzania dla każdego ID */
+.table-view {
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1px;
+    -fx-background-radius: 4px; /* Dla tła, jeśli jest inne niż domyślne */
+    -fx-border-radius: 3px; /* Dla ramki */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #15a418;
+    -fx-background-radius: 3px 3px 0 0; /* Zaokrąglenie tylko górnych rogów */
+    -fx-background-insets: 0;
+}
+
+.table-view .column-header-background .label {
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px; /* Wewnętrzny odstęp w komórkach nagłówka */
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-view .column-header {
+    -fx-border-color: derive(#15a418, -10%); /* Ciemniejsza linia między nagłówkami */
+    -fx-border-width: 0 1px 0 0;          /* Tylko prawa krawędź */
+}
+
+.table-view .table-cell {
+    -fx-padding: 8px 10px;
+    -fx-font-size: 13px;
+    -fx-text-fill: #333333;
+    -fx-border-color: #e0e0e0; /* Kolor stosowany do prawej krawędzi zdefiniowanej poniżej */
+    -fx-border-width: 0 1px 0 0;  /* Prawa krawędź komórki danych */
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-width: 0 0 1px 0; /* Linia pod każdym wierszem */
+    -fx-border-color: #e0e0e0;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #f9f9f9; /* Paski zebry */
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: derive(#15a418, 70%); /* Jasnozielone tło dla zaznaczonego wiersza */
+}
+.table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: #107712; /* Ciemniejszy zielony tekst dla lepszej czytelności w zaznaczonym wierszu */
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: derive(#15a418, 80%); /* Jaśniejszy zielony odcień przy najechaniu na wiersz */
+}
+
+.table-view .placeholder .label { /* Tekst, gdy tabela jest pusta */
+    -fx-text-fill: #777777;
+    -fx-font-size: 14px;
+}
+
+.table-view:focused {
+    /* Można dostosować domyślny styl focusu, np. cieńsza ramka lub inny kolor */
+    /* -fx-focus-color: derive(#15a418, 50%); */
+    /* -fx-faint-focus-color: transparent; */
+}
