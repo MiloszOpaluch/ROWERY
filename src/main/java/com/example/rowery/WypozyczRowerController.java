@@ -11,16 +11,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.hibernate.Session;
-import javafx.scene.control.TextField;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import org.hibernate.Transaction;
 
 import java.util.List;
@@ -42,6 +39,8 @@ public class WypozyczRowerController {
         try {
             FXMLLoader load = new FXMLLoader(getClass().getResource("klient.fxml"));
             Parent root = load.load();
+            KlientController controller = load.getController();
+            controller.zalogownyklient(this.zalogowny);
             Stage stage = (Stage) Cofnij.getScene().getWindow();
             stage.setScene(new Scene(root));
 
@@ -73,19 +72,23 @@ public class WypozyczRowerController {
         System.out.println("asd");
     }
     @FXML
+    private Label errorLabel;
+    @FXML
     private Button wypozyczrower;
     @FXML
     private void wypozycz(ActionEvent event)
     {
         Rower selectedRower =rowerTable.getSelectionModel().getSelectedItem();
         if (selectedRower == null) {
+            errorLabel.setText("Nie wybrano roweru do wypożyczenia!");
             System.out.println("Brak wybranego roweru do wypozyczenia.");
             return;
         }
-        if (!selectedRower.getDostepny()) {
-            System.out.println("Wybrany rower jest już wypożyczony lub nie ma go aktualnie w sklepie ");
-            return;
-        }
+            if (!selectedRower.getDostepny()) {
+                errorLabel.setText("Rower który wybrałeś/aś jest niedostępny!");
+                System.out.println("Wybrany rower jest już wypożyczony lub nie ma go aktualnie w sklepie ");
+                return;
+            }
 
         try(Session session = HibernateUtil.getSessionFactory().openSession())
         {

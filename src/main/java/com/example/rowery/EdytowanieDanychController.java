@@ -47,6 +47,8 @@ public class EdytowanieDanychController {
         try {
             FXMLLoader load = new FXMLLoader(getClass().getResource("klient.fxml"));
             Parent root = load.load();
+            KlientController controller = load.getController();
+            controller.zalogownyklient(this.zalogowny);
             Stage stage = (Stage) Cofnij.getScene().getWindow();
             stage.setScene(new Scene(root));
 

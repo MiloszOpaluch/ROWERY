@@ -12,16 +12,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.hibernate.Session;
-import javafx.scene.control.TextField;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import org.hibernate.Transaction;
 
 import java.util.List;
@@ -64,12 +61,14 @@ public class ZwrotRoweruController {
             e.printStackTrace();
         }
     }
-
+    @FXML
+    private Label errorLabel;
     @FXML
     private void zwrocRower(ActionEvent event) {
         Rower wybranyRower = tabelaRowerow.getSelectionModel().getSelectedItem();
 
         if (wybranyRower == null) {
+            errorLabel.setText("Nie wybrano roweru!");
             System.out.println("Nie wybrano roweru do zwrotu.");
             return;
         }
@@ -113,6 +112,8 @@ public class ZwrotRoweruController {
         try {
             FXMLLoader load = new FXMLLoader(getClass().getResource("klient.fxml"));
             Parent root = load.load();
+            KlientController controller = load.getController();
+            controller.zalogownyklient(this.zalogowny);
             Stage stage = (Stage) Cofnij.getScene().getWindow();
             stage.setScene(new Scene(root));
 

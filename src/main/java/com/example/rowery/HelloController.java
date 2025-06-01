@@ -72,7 +72,6 @@ public void initialize() {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlNazwa));
             Parent root = loader.load();
 
-            // Przekazujemy klienta do KlientController
             KlientController klientController = loader.getController();
             klientController.zalogownyklient(zalogowanyKlient);
 
