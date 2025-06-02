@@ -46,17 +46,21 @@ public class RoweryController {
 
     @FXML
     private void dodanieroweru(ActionEvent event) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
         String model = modelField.getText();
         String typ_roweru = typField.getText();
-        //String model = modelField.getText();
-
+        if(modelField.getText().isEmpty() || typField.getText().isEmpty())
+        {
+            errorLabel.setText("Aby dodać rower musisz podac wszystkie dane");
+            return;
+        }
         Rower nowy_rower = new Rower();
         nowy_rower.setModel(model);
         nowy_rower.setTyp(typ_roweru);
         nowy_rower.setDostepny(dostepnyField.isSelected());
 
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+
         session.beginTransaction();
         session.persist(nowy_rower);
         session.getTransaction().commit();
@@ -112,9 +116,12 @@ public class RoweryController {
 //
 //    }
     @FXML
+    private Label errorLabel;
+    @FXML
     private void usunrower(ActionEvent event) {
         Rower selectedRower = tablicarower.getSelectionModel().getSelectedItem();
         if (selectedRower == null) {
+            errorLabel.setText("Nie wybrano roweru do usunięcia");
             System.out.println("Brak wybranego roweru do usunięcia.");
             return;
         }

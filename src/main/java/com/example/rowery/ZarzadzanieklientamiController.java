@@ -2,6 +2,7 @@ package com.example.rowery;
 
 import com.example.rowery.klasy.klient;
 import jakarta.persistence.Query;
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,14 +10,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.hibernate.Session;
-import javafx.scene.control.TextField;
 
-import javafx.scene.control.TableView;
 import java.util.List;
 import java.util.Queue;
 
@@ -51,7 +50,8 @@ public class ZarzadzanieklientamiController {
     private TextField hasloField;
     @FXML
     private Button dodajButton;
-
+    @FXML
+    private Label errorLabel;
     @FXML
     private void dodaj() {
         dodajButton.setOnAction(e -> dodajKlienta());
@@ -63,27 +63,53 @@ public class ZarzadzanieklientamiController {
         String login = loginField.getText();
         String haslo = hasloField.getText();
 
-        klient nowyKlient = new klient();
-        nowyKlient.setImie(imie);
-        nowyKlient.setNazwisko(nazwisko);
-        nowyKlient.setLogin(login);
-        nowyKlient.setHaslo(haslo);
-
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.persist(nowyKlient);
-        session.getTransaction().commit();
-        session.close();
 
-        imieField.clear();
-        nazwiskoField.clear();
-        loginField.clear();
-        hasloField.clear();
+        try {
+            session.beginTransaction();
 
-        Session session2 = HibernateUtil.getSessionFactory().openSession();
-        List<klient> klienci = session2.createQuery("from klient").list();
-        session2.close();
-        tablicaklient.setItems(FXCollections.observableList(klienci));
+            List<klient> istnieje = session.createQuery(
+                            "FROM klient k WHERE k.login = :login", klient.class)
+                    .setParameter("login", login)
+                    .getResultList();
+
+            if (!istnieje.isEmpty()) {
+                errorLabel.setText("Użytkownik z takim loginem już istnieje");
+                PauseTransition pause = new PauseTransition(Duration.seconds(3));
+                pause.setOnFinished(event -> errorLabel.setText(""));
+                pause.play();
+                return;
+            }
+            if(imieField.getText().isEmpty() || nazwiskoField.getText().isEmpty() || loginField.getText().isEmpty() || hasloField.getText().isEmpty())
+            {
+                errorLabel.setText("Aby dodać użytkownika musisz uzupełnić wszystkie dane");
+                PauseTransition pause = new PauseTransition(Duration.seconds(3));
+                pause.setOnFinished(event -> errorLabel.setText(""));
+                pause.play();
+                return;
+
+            }
+            klient nowyKlient = new klient();
+            nowyKlient.setImie(imie);
+            nowyKlient.setNazwisko(nazwisko);
+            nowyKlient.setLogin(login);
+            nowyKlient.setHaslo(haslo);
+
+            session.persist(nowyKlient);
+            session.getTransaction().commit();
+
+            imieField.clear();
+            nazwiskoField.clear();
+            loginField.clear();
+            hasloField.clear();
+
+            List<klient> klienci = session.createQuery("FROM klient", klient.class).list();
+            tablicaklient.setItems(FXCollections.observableList(klienci));
+
+        } catch (Exception e) {
+           e.printStackTrace();
+            }
+
     }
     @FXML private TableView<klient> tablicaklient;
     @FXML private TableColumn<klient, String> Imie;
@@ -92,18 +118,15 @@ public class ZarzadzanieklientamiController {
     @FXML private TableColumn<klient, String> Haslo;
     @FXML
     private void initialize() {
-        // Powiązanie kolumn z właściwościami klasy klient
         Imie.setCellValueFactory(new PropertyValueFactory<>("imie"));
         Nazwisko.setCellValueFactory(new PropertyValueFactory<>("nazwisko"));
         Login.setCellValueFactory(new PropertyValueFactory<>("login"));
         Haslo.setCellValueFactory(new PropertyValueFactory<>("haslo"));
 
-        // Pobranie danych z bazy
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<klient> klienci = session.createQuery("from klient", klient.class).list();
         session.close();
 
-        // Ustawienie danych do tabeli
         ObservableList<klient> dane = FXCollections.observableArrayList(klienci);
         tablicaklient.setItems(dane);
     }

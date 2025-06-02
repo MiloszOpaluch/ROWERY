@@ -34,7 +34,7 @@ public class EdytowanieDanychController {
     private klient zalogowny;
 
     public void zalogownyklient(klient klient) {
-        this.zalogowny = klient; // Pamietaj ten sout jest po to zeby sprawdzac czy to sie w ogole wykonuje :)
+        this.zalogowny = klient;
         System.out.println("Test czy wykonuje sie polecienie");
         wyswietl();
 

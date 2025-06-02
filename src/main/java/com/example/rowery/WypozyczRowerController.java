@@ -116,15 +116,10 @@ public class WypozyczRowerController {
                 }
 
             } catch (Exception e) {
-                if (transaction != null) {
-                    transaction.rollback();
-                }
                 e.printStackTrace();
-                System.err.println("Błąd podczas wypożyczania roweru: " + e.getMessage());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Błąd otwarcia sesji Hibernate: " + e.getMessage());
         }
     }
 }
