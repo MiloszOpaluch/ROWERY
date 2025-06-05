@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +19,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import java.awt.event.ActionEvent;
 import java.util.List;
 
 public class EdytowanieDanychController {
@@ -39,24 +39,8 @@ public class EdytowanieDanychController {
         wyswietl();
 
     }
-    @FXML
-    private Button Cofnij;
-
-    @FXML
-    private void cofnijj(javafx.event.ActionEvent actionEvent) {
-        try {
-            FXMLLoader load = new FXMLLoader(getClass().getResource("klient.fxml"));
-            Parent root = load.load();
-            KlientController controller = load.getController();
-            controller.zalogownyklient(this.zalogowny);
-            Stage stage = (Stage) Cofnij.getScene().getWindow();
-            stage.setScene(new Scene(root));
 
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     @FXML
     private Button zapisz;
     @FXML
@@ -104,10 +88,82 @@ public class EdytowanieDanychController {
         kolumnaNazwisko.setCellValueFactory(new PropertyValueFactory<>("nazwisko"));
         kolumnaLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
         kolumnaHaslo.setCellValueFactory(new PropertyValueFactory<>("haslo"));
+        tabelaDanych.setItems(FXCollections.observableArrayList(zalogowny));    }
+    @FXML
+    private Button logoutButton;
+    @FXML
+    private void wylogowanie(javafx.event.ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            Parent root = loader.load();
 
-        tabelaDanych.setItems(FXCollections.observableArrayList(zalogowny));
+            Stage stage = (Stage) logoutButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Logowanie");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private Button wypozycz;
+    @FXML
+    private void wypozyczrower(javafx.event.ActionEvent event)
+    {
+        try {
+            FXMLLoader load = new FXMLLoader(getClass().getResource("wypozycz-rower.fxml"));
+            Parent root = load.load();
+            WypozyczRowerController wypozyczRowerController = load.getController();
+            wypozyczRowerController.zalogownyklient(this.zalogowny);
+            Stage stage = (Stage) wypozycz.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Wypozyczanie");
+
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private Button zwrot;
+    @FXML
+    private void zwrotroweru(javafx.event.ActionEvent event) {
+        try {
+            FXMLLoader loaderr = new FXMLLoader(getClass().getResource("Zwroc_rower.fxml"));
+            Parent root = loaderr.load();
+
+            ZwrotRoweruController controller = loaderr.getController();
+            controller.zalogownyklient(this.zalogowny);
+
+            Stage stage = (Stage) zwrot.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Moje wypożyczone rowery");
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private Button edytuj;
+    @FXML
+    private void edytujDane(ActionEvent event) {
+        try {
+            FXMLLoader loade = new FXMLLoader(getClass().getResource("EdytowanieDanych.fxml"));
+            Parent root = loade.load();
+
+            EdytowanieDanychController controller = loade.getController();
+            controller.zalogownyklient(this.zalogowny);
+
+            Stage stage = (Stage) edytuj.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Edytuj dane klienta");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
+
 
 
 

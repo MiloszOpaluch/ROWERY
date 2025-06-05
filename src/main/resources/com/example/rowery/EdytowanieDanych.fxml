@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -9,35 +10,76 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="621.0" prefWidth="1165.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rowery.EdytowanieDanychController">
+<?import javafx.scene.control.Separator?>
+<AnchorPane prefHeight="821.0" prefWidth="1165.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rowery.EdytowanieDanychController">
+    <Separator layoutY="67.0" prefHeight="12.0" prefWidth="1165.0" />
 
-    <ImageView fitHeight="238.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <ImageView fitHeight="73.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="383.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="925.0" AnchorPane.topAnchor="0.0">
         <image>
             <Image url="@../../../img/oooo.png" />
         </image>
     </ImageView>
 
-    <Button fx:id="Cofnij" onAction="#cofnijj" prefHeight="70.0" prefWidth="260.0" text="Cofnij" textFill="#15a418" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <font>
-            <Font size="16.0" />
-        </font>
-    </Button>
+    <Label layoutX="923.0" layoutY="242.0" prefHeight="19.0" prefWidth="213.0" text="Nowy login:" AnchorPane.leftAnchor="923.0" AnchorPane.topAnchor="242.0" />
+    <TextField fx:id="loginField" layoutX="923.0" layoutY="261.0" prefHeight="36.0" prefWidth="213.0" promptText="Wprowadź nowy login" AnchorPane.leftAnchor="923.0" AnchorPane.topAnchor="261.0" />
 
-    <Label layoutX="905.0" layoutY="70.0" prefHeight="17.0" prefWidth="260.0" text="Nowy login:" AnchorPane.leftAnchor="905.0" AnchorPane.topAnchor="70.0" />
-    <TextField fx:id="loginField" layoutX="905.0" layoutY="89.0" prefHeight="25.0" prefWidth="260.0" promptText="Wprowadź nowy login" AnchorPane.leftAnchor="905.0" AnchorPane.topAnchor="89.0" />
+    <Label layoutX="923.0" layoutY="304.0" prefHeight="19.0" prefWidth="213.0" text="Nowe hasło:" AnchorPane.leftAnchor="923.0" AnchorPane.topAnchor="304.0" />
+    <PasswordField fx:id="hasloField" layoutX="923.0" layoutY="323.0" prefHeight="36.0" prefWidth="213.0" promptText="Wprowadź nowe hasło" AnchorPane.leftAnchor="923.0" AnchorPane.topAnchor="323.0" />
 
-    <Label layoutX="905.0" layoutY="125.0" prefHeight="17.0" prefWidth="260.0" text="Nowe hasło:" AnchorPane.leftAnchor="905.0" AnchorPane.topAnchor="125.0" />
-    <PasswordField fx:id="hasloField" layoutX="904.0" layoutY="144.0" prefHeight="25.0" prefWidth="260.0" promptText="Wprowadź nowe hasło" AnchorPane.leftAnchor="904.0" AnchorPane.topAnchor="144.0" />
+    <Button fx:id="zapisz" layoutX="923.0" layoutY="119.0" onAction="#zapiszZmiany" prefHeight="70.0" prefWidth="213.0" text="Zapisz zmiany" AnchorPane.leftAnchor="923.0" AnchorPane.topAnchor="119.0" />
+    <TableView fx:id="tabelaDanych" layoutX="249.0" layoutY="119.0" prefHeight="79.9999" prefWidth="663.0" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="119.0">
+    <columns>
+        <TableColumn fx:id="kolumnaImie" prefWidth="117.0" text="Imię" />
+        <TableColumn fx:id="kolumnaNazwisko" prefWidth="160.0" text="Nazwisko" />
+        <TableColumn fx:id="kolumnaLogin" prefWidth="187.0" text="Aktualny login" />
+        <TableColumn fx:id="kolumnaHaslo" prefWidth="193.0" text="Aktualne hasło" />
+    </columns>
+</TableView>
+        <HBox layoutX="60.0" layoutY="1.0" prefHeight="69.0" prefWidth="1107.0" spacing="35.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
-    <Button fx:id="zapisz" layoutX="905.0" layoutY="180.0" onAction="#zapiszZmiany" prefHeight="70.0" prefWidth="260.0" text="Zapisz zmiany" AnchorPane.leftAnchor="905.0" AnchorPane.topAnchor="180.0" />
-    <TableView fx:id="tabelaDanych" layoutX="237.0" layoutY="0.0" prefHeight="150.0" prefWidth="668.0" AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="0.0">
-        <columns>
-            <TableColumn fx:id="kolumnaImie" prefWidth="117.0" text="Imię" />
-            <TableColumn fx:id="kolumnaNazwisko" prefWidth="149.0" text="Nazwisko" />
-            <TableColumn fx:id="kolumnaLogin" prefWidth="200.0" text="Aktualny login" />
-            <TableColumn fx:id="kolumnaHaslo" prefWidth="194.0" text="Aktualne hasło" />
-        </columns>
-    </TableView>
+            <Button fx:id="wypozycz" onAction="#wypozyczrower" prefHeight="60.0" prefWidth="261.0" text="Wypożycz rower" textFill="#15a418">
+                <font>
+                    <Font size="16.0" />
+                </font>
+                <HBox.margin>
+                    <Insets bottom="10.0" left="25.0" top="10.0" />
+                </HBox.margin>
+
+
+            </Button>
+
+            <Button fx:id="zwrot" onAction="#zwrotroweru" prefHeight="70.0" prefWidth="260.0" text="Zwróć rower" textFill="#15a418">
+                <font>
+                    <Font size="16.0" />
+                </font>
+                <HBox.margin>
+                    <Insets bottom="10.0" top="10.0" />
+                </HBox.margin>
+
+            </Button>
+
+            <Button fx:id="edytuj" onAction="#edytujDane" prefHeight="70.0" prefWidth="260.0" text="Edytuj dane konta" textFill="#15a418">
+                <font>
+                    <Font size="16.0" />
+                </font>
+
+                <HBox.margin>
+                    <Insets bottom="10.0" top="10.0" />
+                </HBox.margin>
+            </Button>
+
+            <Button fx:id="logoutButton" onAction="#wylogowanie" prefHeight="49.0" prefWidth="147.0" text="Wyloguj" textFill="#15a418">
+                <font>
+                    <Font size="16.0" />
+                </font>
+                <HBox.margin>
+                    <Insets bottom="10.0" top="10.0" />
+                </HBox.margin>
+
+            </Button>
+        </HBox>
+
 </AnchorPane>

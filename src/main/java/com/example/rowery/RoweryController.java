@@ -95,7 +95,54 @@ public class RoweryController {
             e.printStackTrace();
         }
     }
+    @FXML
+    private Button logoutButton;
 
+    @FXML
+    private void wylogowanie(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) logoutButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Logowanie");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private Button zarzadzaj;
+    @FXML
+    private void zarzadzanie(ActionEvent event)
+    {
+        try {
+            FXMLLoader load = new FXMLLoader(getClass().getResource("zarzadzanieklientami.fxml"));
+            Parent root = load.load();
+
+            Stage st = (Stage) zarzadzaj.getScene().getWindow();
+            st.setScene(new Scene(root));
+            st.getTitle();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private Button row;
+    @FXML
+    private void rowery(ActionEvent event)
+    {
+        try{
+            FXMLLoader load = new FXMLLoader(getClass().getResource("roweryy.fxml"));
+            Parent root = load.load();
+            Stage stagee = (Stage) row.getScene().getWindow();
+            stagee.setScene(new Scene(root));
+            stagee.getTitle();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private Button usunrower;
 

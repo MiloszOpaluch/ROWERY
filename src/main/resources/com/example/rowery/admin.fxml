@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="621.0" prefWidth="1165.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rowery.AdminController" stylesheets="@styles.css">
+<?import javafx.scene.control.Separator?>
+<AnchorPane prefHeight="821.0" prefWidth="1165.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rowery.AdminController">
 
     <children>
       <Label prefHeight="30.0" prefWidth="240.0" text="ZALOGOWANY JAKO: ADMIN" textFill="#15a418" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="929.0">
@@ -17,26 +18,30 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-        <ImageView fitHeight="231.0" fitWidth="240.0" layoutX="0.0" layoutY="0.0" preserveRatio="true" AnchorPane.bottomAnchor="390.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="934.0" AnchorPane.topAnchor="0.0">
+        <ImageView fitHeight="73.0" fitWidth="83.0" layoutX="0.0" layoutY="0.0" preserveRatio="true" AnchorPane.bottomAnchor="390.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="934.0" AnchorPane.topAnchor="0.0">
             <image>
                 <Image url="@../../../img/oooo.png" />
             </image>
         </ImageView>
+        <Separator layoutY="67.0" prefHeight="12.0" prefWidth="1165.0" />
 
-        <HBox layoutX="260.0" layoutY="1.0" prefHeight="179.0" prefWidth="760.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox layoutX="60.0" layoutY="1.0" prefHeight="60.0" prefWidth="1105.0" spacing="25.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
-            <Button fx:id="zarzadzaj" onAction="#zarzadzanie" prefHeight="70.0" prefWidth="386.5" text="Zarządzaj klientami" textFill="#15a418">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            </Button>
-
-            <Button fx:id="row" onAction="#rowery" prefHeight="70.0" prefWidth="386.5" text="Zarządzaj rowerami" textFill="#15a418">
+            <Button fx:id="zarzadzaj" onAction="#zarzadzanie" prefHeight="49.0" prefWidth="419.0" text="Zarządzaj klientami" textFill="#15a418">
                 <font>
                     <Font size="16.0" />
                 </font>
             <HBox.margin>
-               <Insets />
+               <Insets bottom="10.0" left="25.0" top="10.0" />
+            </HBox.margin>
+            </Button>
+
+            <Button fx:id="row" onAction="#rowery" prefHeight="49.0" prefWidth="419.0" text="Zarządzaj rowerami" textFill="#15a418">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            <HBox.margin>
+               <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
             </Button>
 
@@ -46,6 +51,9 @@
                 <font>
                     <Font size="16.0" />
                 </font>
+            <HBox.margin>
+               <Insets bottom="10.0" top="10.0" />
+            </HBox.margin>
             </Button>
         </HBox>
     </children>

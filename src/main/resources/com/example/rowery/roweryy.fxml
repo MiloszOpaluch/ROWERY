@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -12,25 +13,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rowery.RoweryController">
+<AnchorPane prefHeight="821.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rowery.RoweryController">
+    <Separator layoutY="67.0" prefHeight="12.0" prefWidth="1165.0" />
 
     <GridPane layoutX="905.0" layoutY="70.0">
-        <Button fx:id="usunrower" mnemonicParsing="false" onAction="#usunrower" prefHeight="40.0" prefWidth="100.0" text="Usuń" GridPane.rowIndex="4" GridPane.rowSpan="4">
-            <GridPane.margin>
-                <Insets left="60.0" />
-            </GridPane.margin>
-        </Button>
-
-        <TextField fx:id="modelField" prefWidth="260" promptText="Model" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <TextField fx:id="typField" prefWidth="260" promptText="Typ roweru" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <Button fx:id="dodaj" onAction="#dodanieroweru" prefWidth="100" text="Dodaj" GridPane.columnIndex="0" GridPane.rowIndex="4">
-            <GridPane.margin>
-                <Insets left="160.0" />
-            </GridPane.margin></Button>
-      <CheckBox fx:id="dostepnyField" mnemonicParsing="false" prefWidth="260.0" text="Dostępny" GridPane.rowIndex="2" />
         <columnConstraints>
             <ColumnConstraints />
         </columnConstraints>
@@ -45,25 +35,56 @@
          <RowConstraints />
         </rowConstraints>
     </GridPane>
-    <ImageView fitHeight="238.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="383.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="925.0" AnchorPane.topAnchor="0.0">
+    <ImageView fitHeight="73.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="383.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="925.0" AnchorPane.topAnchor="0.0">
         <image>
             <Image url="@../../../img/oooo.png" />
         </image>
     </ImageView>
-
-    <Button fx:id="Cofnij" layoutX="333.0" layoutY="7.0" onAction="#cofnij" prefHeight="70.0" prefWidth="260.0" text="Cofniji" textFill="#15a418" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <font>
-            <Font size="16.0" />
-        </font>
-    </Button>
-    <TableView fx:id="tablicarower" layoutX="238.0" prefHeight="238.0" prefWidth="665.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="0.0">
+    <TableView fx:id="tablicarower" layoutX="238.0" layoutY="121.0" prefHeight="546.0" prefWidth="667.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="121.0">
         <columns>
             <TableColumn fx:id="model" prefWidth="259.0" text="Model" />
-            <TableColumn fx:id="typ_roweru" prefWidth="239.0" text="Typ roweru" />
-            <TableColumn fx:id="dostepny" prefWidth="164.0" text="Dostepny" />
-<!--            <TableColumn fx:id="Klient" prefWidth="280.0" text="Właściciel (klient)" />-->
+            <TableColumn fx:id="typ_roweru" prefWidth="230.0" text="Typ roweru" />
+            <TableColumn fx:id="dostepny" prefWidth="174.0" text="Dostepny" />
         </columns>
     </TableView>
-   <Label fx:id="errorLabel" layoutX="905.0" layoutY="238.0" prefHeight="19.0" prefWidth="260.0" textFill="RED" />
+   <Label fx:id="errorLabel" layoutX="936.0" layoutY="492.0" prefHeight="22.0" prefWidth="218.0" textFill="RED" />
+    <HBox layoutX="60.0" layoutY="1.0" prefHeight="60.0" prefWidth="1105.0" spacing="25.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
+        <Button fx:id="zarzadzaj" onAction="#zarzadzanie" prefHeight="49.0" prefWidth="419.0" text="Zarządzaj klientami" textFill="#15a418">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <HBox.margin>
+                <Insets bottom="10.0" left="25.0" top="10.0" />
+            </HBox.margin>
+        </Button>
+
+        <Button fx:id="row" onAction="#rowery" prefHeight="49.0" prefWidth="419.0" text="Zarządzaj rowerami" textFill="#15a418">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <HBox.margin>
+                <Insets bottom="10.0" top="10.0" />
+            </HBox.margin>
+        </Button>
+
+
+
+        <Button fx:id="logoutButton" onAction="#wylogowanie" prefHeight="70.0" prefWidth="160.0" text="Wyloguj" textFill="#15a418">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <HBox.margin>
+                <Insets bottom="10.0" top="10.0" />
+            </HBox.margin>
+        </Button>
+    </HBox>
+
+     <TextField fx:id="modelField" layoutX="976.0" layoutY="194.0" prefHeight="36.0" prefWidth="166.0" promptText="Model" />
+     <Button fx:id="dodaj" layoutX="926.0" layoutY="286.0" onAction="#dodanieroweru" prefWidth="100" text="Dodaj" />
+     <Button fx:id="usunrower" layoutX="1045.0" layoutY="287.0" mnemonicParsing="false" onAction="#usunrower" prefHeight="40.0" prefWidth="100.0" text="Usuń" />
+     <TextField fx:id="typField" layoutX="976.0" layoutY="142.0" prefHeight="36.0" prefWidth="166.0" promptText="Typ roweru" />
+   <CheckBox fx:id="dostepnyField" layoutX="976.0" layoutY="244.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="166.0" text="Dostępny" />
+   <Label layoutX="942.0" layoutY="151.0" prefHeight="19.0" prefWidth="31.0" text="Typ:" />
+   <Label layoutX="926.0" layoutY="203.0" prefHeight="19.0" prefWidth="47.0" text="Model:" />
 </AnchorPane>
